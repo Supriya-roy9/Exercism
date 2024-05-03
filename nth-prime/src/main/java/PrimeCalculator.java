@@ -1,19 +1,16 @@
 class PrimeCalculator {
 
-    int isPrime(int k)
+    int isPrime(int number)
     {
-        if (k <= 1)
-            return 0;
-        if (k==2 || k==3)
-            return 1;
+        if(number <2) return 0;
+        if(number ==2) return 1;
 
-        if (k % 2 == 0 || k % 3 == 0)
-            return 0;
+        if(number %2==0) return 0;
 
-        for (int i = 5; i * i <= k; i = i + 6)
-            if (k % i == 0 || k % (i + 2) == 0)
-                return 0;
+        for (int index = 3; index * index <= number; index +=2) {
+            if(number % index ==0) return 0;
 
+        }
         return 1;
     }
 
@@ -21,17 +18,18 @@ class PrimeCalculator {
         if(nth==0){
             throw new IllegalArgumentException();
         }
-        int i=2;
+        int prime_number =2;
 
         while(nth>0)
         {
-            if(isPrime(i)==1)
+            if(isPrime(prime_number)==1)
                 nth--;
 
-            i++;
+            prime_number++;
         }
-        i-=1;
-        return i;
+        prime_number = prime_number -1;
+
+        return prime_number;
     }
 
 }
